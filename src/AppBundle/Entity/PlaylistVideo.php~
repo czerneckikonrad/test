@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PlaylistVideo
+ *
+ * @ORM\Table(name="playlist_video", indexes={@ORM\Index(name="video_id", columns={"video_id"}), @ORM\Index(name="playlist_id", columns={"playlist_id"})})
+ * @ORM\Entity
+ */
+class PlaylistVideo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_added", type="datetime", nullable=false)
+     */
+    private $dateAdded = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="position_in_playlist", type="integer", nullable=true)
+     */
+    private $positionInPlaylist;
+
+    /**
+     * @var \AppBundle\Entity\Videos
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Videos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="video_id", referencedColumnName="id", unique=true)
+     * })
+     */
+    private $video;
+
+    /**
+     * @var \AppBundle\Entity\Playlist
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Playlist")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="playlist_id", referencedColumnName="id", unique=true)
+     * })
+     */
+    private $playlist;
+
+
+}
+

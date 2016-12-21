@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
+    </head>
+    <body>
+    <h1>{{ playlist.playlisttitle }}</h1>
+    <p>{{ playlist.Playlistdescription }}</p>
+    <ol>
+        {% for video in videos %}
+        <li><a data-video='{{ video.video.videoid }}' href='javascript:void(0);'>{{ video.video.title }}</a></li>
+        <hr>
+        {% endfor %}
+    </ol>
+    </body>
+</html>

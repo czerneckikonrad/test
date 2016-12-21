@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Playlist
+ *
+ * @ORM\Table(name="playlist", uniqueConstraints={@ORM\UniqueConstraint(name="playlistId", columns={"playlistId"})})
+ * @ORM\Entity
+ */
+class Playlist
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="playlistId", type="string", length=255, nullable=true)
+     */
+    private $playlistid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="playlistTitle", type="text", length=65535, nullable=true)
+     */
+    private $playlisttitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="playlistDescription", type="text", length=65535, nullable=true)
+     */
+    private $playlistdescription;
+
+
+}
+

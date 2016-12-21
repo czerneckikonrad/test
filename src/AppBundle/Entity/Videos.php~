@@ -1,0 +1,75 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Videos
+ *
+ * @ORM\Table(name="videos", uniqueConstraints={@ORM\UniqueConstraint(name="videoId", columns={"videoId"})})
+ * @ORM\Entity
+ */
+class Videos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="videoId", type="string", length=255, nullable=false)
+     */
+    private $videoid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="text", length=65535, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=65535, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAdded", type="datetime", nullable=false)
+     */
+    private $dateadded = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="views", type="integer", nullable=false)
+     */
+    private $views = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="votesUp", type="integer", nullable=false)
+     */
+    private $votesup = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="votesDown", type="integer", nullable=false)
+     */
+    private $votesdown = '0';
+
+
+}
+

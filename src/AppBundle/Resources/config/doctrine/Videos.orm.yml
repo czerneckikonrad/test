@@ -1,0 +1,63 @@
+AppBundle\Entity\Videos:
+    type: entity
+    table: videos
+    uniqueConstraints:
+        videoId:
+            columns:
+                - videoId
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        videoid:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: videoId
+        title:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        dateadded:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: dateAdded
+        views:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        votesup:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: votesUp
+        votesdown:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: votesDown
+    lifecycleCallbacks: {  }

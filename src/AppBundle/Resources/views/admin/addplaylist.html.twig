@@ -1,0 +1,15 @@
+{% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+        <div class="alert alert-{{ label }}">
+            {{ flash }}
+        </div>
+    {% endfor %}
+{% endfor %}
+<ul>
+    {% for playlist in playlists %}
+        <li><a href="{{ path('getVideoFromPlaylist', {'id': playlist.id}) }}" target="_blank">{{ playlist.playlisttitle }}</a> <a href="{{ path('playlistEdit', {'id': playlist.id}) }}">[[EDIT]]</a> <a onclick="return confirm('Czy na pewno usunąć playlistę?')" href="{{ path('deletePlaylist', {'id': playlist.id}) }}">[[DELETE]]</a></li>
+    {% endfor %}
+</ul>
+
+<h1>Dodaj nową playlistę:</h1>
+{{ form(form) }}

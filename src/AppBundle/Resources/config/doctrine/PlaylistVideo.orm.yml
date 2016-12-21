@@ -1,0 +1,54 @@
+AppBundle\Entity\PlaylistVideo:
+    type: entity
+    table: playlist_video
+    indexes:
+        video_id:
+            columns:
+                - video_id
+        playlist_id:
+            columns:
+                - playlist_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateAdded:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: date_added
+        positionInPlaylist:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: position_in_playlist
+    oneToOne:
+        video:
+            targetEntity: Videos
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                video_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        playlist:
+            targetEntity: Playlist
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                playlist_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
